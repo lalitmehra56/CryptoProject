@@ -6,6 +6,7 @@ function App() {
   return (
     <>
       {/* <CurrencyContext.Provider value={{ currency, setCurrency }}> */}
+
       <Routing />
       {/* </CurrencyContext.Provider> */}
 

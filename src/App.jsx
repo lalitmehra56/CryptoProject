@@ -6,13 +6,12 @@ import { CurrencyContext } from "./componets/Context/Context";
 import Home from "./componets/pages/Home";
 
 function App() {
-  const [currency, setCurrency] = useState("usd");
+  // const [currency, setCurrency] = useState("usd");
   return (
     <>
-      <CurrencyContext.Provider value={{ currency, setCurrency }}>
-        <Home />
-        <NavBar />
-      </CurrencyContext.Provider>
+      {/* <CurrencyContext.Provider value={{ currency, setCurrency }}> */}
+      <Home />
+      {/* </CurrencyContext.Provider> */}
 
       {/* <Banner />
       <CoinsTable currency={currency} /> */}

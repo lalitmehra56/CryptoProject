@@ -1,26 +1,19 @@
-import { useQuery } from "@tanstack/react-query";
 import CoinInfo from "./CoinInfo";
-import { useState } from "react";
-import { fetchCoinHistoricData } from "../../../services/fetchCoinHistoricData";
 import PageLoader from "../pageLoader/PageLoader";
 import Alert from "../Alert/Alert";
-import store from "../../store/store";
+
+import useFetchCoinHistory from "../hooks/useFetchcoinHistory";
 
 function CoinInfoConatiner({ coinId }) {
-  const { currency } = store();
-  const [days, setdays] = useState(7);
-  const [interval, setCoinInerval] = useState("");
-
-  const {
-    data: historicData,
+  const [
+    historicData,
     isLoading,
     isError,
-  } = useQuery({
-    queryKey: ["coinHistoricData", coinId, currency, days, interval],
-    queryFn: () => fetchCoinHistoricData(coinId, currency, days, interval),
-    cacheTime: 1000 * 60 * 2,
-    staleTime: 1000 * 60 * 2,
-  });
+    setdays,
+    setCoinInerval,
+    days,
+    currency,
+  ] = useFetchCoinHistory(coinId);
 
   if (isLoading) {
     return <PageLoader />;
@@ -29,6 +22,7 @@ function CoinInfoConatiner({ coinId }) {
   if (isError) {
     return <Alert message="Error fetching the data" type="error" />;
   }
+
   return (
     <div>
       <CoinInfo

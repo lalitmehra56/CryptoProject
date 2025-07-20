@@ -5,6 +5,7 @@ import Chart from "chart.js/auto";
 import Alert from "../Alert/Alert";
 import { chartDays } from "../../../helper/constants";
 
+Chart.register(CategoryScale);
 const CoinInfo = ({
   historicData,
   setdays,
@@ -22,7 +23,7 @@ const CoinInfo = ({
     }
     setdays(e.target.options[e.target.selectedIndex].value);
   }
-  Chart.register(CategoryScale);
+
   if (!historicData) {
     return <Alert message="No Data is available" type="info" />;
   }

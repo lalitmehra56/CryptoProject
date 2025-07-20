@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { fetchCoinDetails } from "../../../services/fetchCoinDetails";
 import store from "../../store/store";
+import PageLoader from "../pageLoader/PageLoader";
 
 const CoinsDetailsPage = () => {
   const { coinId } = useParams();
@@ -20,7 +21,7 @@ const CoinsDetailsPage = () => {
   });
 
   if (isLoading) {
-    return <div>Loading....</div>;
+    return <PageLoader />;
   }
 
   if (isError) {

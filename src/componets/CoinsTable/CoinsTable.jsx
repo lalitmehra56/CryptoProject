@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { CurrencyContext } from "../Context/Context";
 import store from "../../store/store";
 import { useNavigate } from "react-router-dom";
+import PageLoader from "../pageLoader/PageLoader";
 
 const CoinsTable = () => {
   // const { currency } = useContext(CurrencyContext);
@@ -28,6 +29,10 @@ const CoinsTable = () => {
   if (isError) {
     console.error("Query Errror :", error);
     return <div>Error:{error.message}.</div>;
+  }
+
+  if (isLoading) {
+    return <PageLoader />;
   }
 
   return (
